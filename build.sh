@@ -6,4 +6,4 @@ apt-get update && \
 pip install playwright && \
     playwright install --with-deps
 playwright install-deps
-pip install flask gunicorn
+pip install flask gunicorn pillow

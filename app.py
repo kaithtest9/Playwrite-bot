@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 from playwright.sync_api import Page, expect, sync_playwright
 import os
+import io
+import base64
 
 app = Flask(__name__)
 
@@ -30,7 +32,8 @@ def get_page_screenshot():
         page.wait_for_timeout(500)
         img = page.screenshot()
         browser.close()
-    return '<img src="data:image/png;base64,' + img + '" />'
+    encoded_string = base64.b64encode(img)
+    return '<img src="data:image/png;base64,' + encoded_string + '" />'
 
 @app.route('/getallenv')
 def get_all_env():
