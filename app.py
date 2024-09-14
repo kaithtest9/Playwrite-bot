@@ -27,5 +27,12 @@ def get_page_screenshot():
         browser.close()
     return '<img src="data:image/png;base64,' + img + '" />'
 
+@app.route('/getallenv')
+def get_all_env():
+    envs = dict()
+    for key in os.environ:
+        envs[key] = str(os.environ[key])
+    return jsonify(envs)
+
 if __name__ == '__main__':
     app.run(debug=True)
