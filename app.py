@@ -17,8 +17,12 @@ def lookup():
 @app.route('/get-page-screenshot')
 def get_page_screenshot():
     url = request.args.get('url')
+    args=[
+        "--disable-gpu",
+        "--single-process",
+    ]
     with sync_playwright() as p:
-        browser = p.chromium.launch(slow_mo=50)
+        browser = p.chromium.launch(slow_mo=50, args=args)
         page = browser.new_page()
         page.goto(url)
         print(page.title())
