@@ -1,3 +1,4 @@
+#/bin/bash
 apt-get update && \
     apt-get install -y sudo libevent-dev
 pip install playwright && \
