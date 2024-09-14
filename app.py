@@ -22,7 +22,7 @@ def get_page_screenshot():
         page = browser.new_page()
         page.goto(url)
         # wait for 5 seconds
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(500)
         img = page.screenshot()
         browser.close()
     return '<img src="data:image/png;base64,' + img + '" />'
