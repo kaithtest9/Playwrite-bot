@@ -1,11 +1,18 @@
 from flask import Flask, jsonify, request
 from playwright.sync_api import Page, expect, sync_playwright
+import os
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return 'Hello, World!'
+
+@app.route('/lookup')
+def lookup():
+    path = request.args.get('path')
+    folders = os.listdir(path)
+    return jsonify(folders)
 
 @app.route('/get-page-screenshot')
 def get_page_screenshot():
