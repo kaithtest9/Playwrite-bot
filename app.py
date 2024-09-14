@@ -32,7 +32,7 @@ def get_page_screenshot():
         page.wait_for_timeout(500)
         img = page.screenshot()
         browser.close()
-    encoded_string = base64.b64encode(img)
+    encoded_string = base64.b64encode(img).decode('utf-8')
     return '<img src="data:image/png;base64,' + encoded_string + '" />'
 
 @app.route('/getallenv')
