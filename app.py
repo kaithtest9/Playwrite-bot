@@ -18,9 +18,10 @@ def lookup():
 def get_page_screenshot():
     url = request.args.get('url')
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        browser = p.chromium.launch(slow_mo=50)
         page = browser.new_page()
         page.goto(url)
+        print(page.title())
         # wait for 5 seconds
         page.wait_for_timeout(500)
         img = page.screenshot()
