@@ -1,3 +1,3 @@
-pip install playwright==@1.47.0 && \
+pip install playwright && \
     playwright install --with-deps
 pip install flask gunicorn
